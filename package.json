@@ -11,9 +11,9 @@
 	"categories": [
 		"Other"
 	],
-"activationEvents": [
-	"onCommand:catCoding.start"
-],
+	"activationEvents": [
+		"onCommand:catCoding.start"
+	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
@@ -24,9 +24,7 @@
 			}
 		]
 	},
-	"scripts": {
-
-	},
+	"scripts": {},
 	"devDependencies": {
 		"@types/vscode": "^1.48.0",
 		"@types/glob": "^7.1.3",
@@ -37,5 +35,12 @@
 		"mocha": "^8.1.3",
 		"typescript": "^4.0.2",
 		"vscode-test": "^1.4.0"
+	},
+	"dependencies": {
+		"axios": "^0.20.0",
+		"cheerio": "^1.0.0-rc.3",
+		"express": "^4.17.1",
+		"request": "^2.88.2",
+		"vscode": "^1.1.37"
 	}
 }
