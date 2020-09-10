@@ -3,13 +3,19 @@
 const vscode = require("vscode");
 const axios = require("axios");
 const cheerio = require("cheerio");
-// const server = require("./server");
+const server = require("./server");
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 
 /**
  * @param {vscode.ExtensionContext} context
  */
+
+ const app = server.app
+ app.listen(3000, function () {
+   console.log("Server Is up and running");
+ });
+
 function activate(context) {
   context.subscriptions.push(
     vscode.commands.registerCommand("catCoding.start", async () => {
@@ -23,9 +29,16 @@ function activate(context) {
         } // Webview options. More on these later.
       );
 
-      // And set its HTML content
-      // panel.webview.html = getWebviewContent();
-      panel.webview.html = await getGoogle();
+      let iteration = 0;
+      const updateWebview = async () => {
+        panel.webview.html = await getGoogle();
+      };
+
+      // Set initial content
+      updateWebview();
+
+      // And schedule updates to the content every second
+      setInterval(updateWebview, 1000);
     })
   );
 }
@@ -47,6 +60,6 @@ async function getGoogle() {
     return data;
   } catch (error) {
     console.log(error);
-    return "Errore"
+    return "Errore";
   }
 }
