@@ -30,8 +30,8 @@ function activate(context) {
       );
 
       let iteration = 0;
-      const updateWebview = async () => {
-        panel.webview.html = await getGoogle();
+      const updateWebview = () => {
+        panel.webview.html = getBG();
       };
 
       // Set initial content
@@ -62,4 +62,25 @@ async function getGoogle() {
     console.log(error);
     return "Errore";
   }
+}
+
+function getBG() {
+  return `<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="" />
+
+ 
+
+    </head>
+    <body>
+        <iframe style="width: 100%; height: 800px" style="" id="contenuto" src="">
+    </iframe>
+        
+        
+    </body>
+</html>`;
+
 }
